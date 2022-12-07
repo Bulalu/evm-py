@@ -1,14 +1,16 @@
 
 #stack of 256-bit words with a maximum size of 1024
 
-class StackOverflow(Exception):
-    """Overflowing bro"""
-
 class StackUnderflow(Exception):
-    """Underflow bro"""
+    ...
+
+
+class StackOverflow(Exception):
+    ...
+
 
 class InvalidStackItem(Exception):
-    """Invalid Stack item bro"""
+    ...
 
 class Stack:
     def __init__(self, max_depth=1024) -> None:
@@ -30,13 +32,17 @@ class Stack:
 
         return self.stack.pop()
 
-    def check(self) -> list:
-        return self.stack
+    def __str__(self) -> str:
+        return str(self.stack)
+
+    def __repr__(self) -> str:
+        return str(self)
 
     
 stack = Stack()
 stack.push(23)
-stack.push(34)
+stack.push(1)
 stack.push(90)
 stack.pop()
-print(stack.check())
+print(type(stack.__str__()))
+print(type(stack.__repr__()))
